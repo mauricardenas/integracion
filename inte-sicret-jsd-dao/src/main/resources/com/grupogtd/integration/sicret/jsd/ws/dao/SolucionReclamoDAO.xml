@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.SolucionReclamoDAO">
+
+    <select id="insertSolucionReclamo" parameterType="map" statementType="CALLABLE">
+        { call SICRET.PKG_JSD_SOLUCION_RECLAMO.SP_INSERT_SOL_RECLAMO(
+        #{p_id_solucion, mode=IN, jdbcType=VARCHAR},
+        #{p_id_reclamo, mode=IN, jdbcType=VARCHAR},
+        #{p_body_comment, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="procesarReclamoPadre" parameterType="map" statementType="CALLABLE">
+        { call SICRET.PKG_JSD_SOLUCION_RECLAMO.SP_PROCESAR_RECLAMO(
+        #{p_id_solucion, mode=IN, jdbcType=VARCHAR},
+        #{p_id_reclamo, mode=IN, jdbcType=VARCHAR},
+         #{p_body_comment, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+
+</mapper>

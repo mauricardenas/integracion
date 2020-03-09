@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.ListaValoresDAO">
+
+    <select id="obtenerValor" parameterType="map" statementType="CALLABLE">
+        { #{OUT_VALOR, mode=OUT, jdbcType=VARCHAR} =  call SICRET.PKG_LISTA_VALORES.FN_GET_VALOR(
+        new T_PKG_LISTA_VALORES
+        (
+            #{item.tipoLista},
+            #{item.subTipoLista},
+            #{item.valorVisible},
+            #{item.valorNoVisible},
+            #{item.estado}
+        ))}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/inte-sicret-jsd-business/inte-sicret-jsd-business.iml" filepath="$PROJECT_DIR$/inte-sicret-jsd-business/inte-sicret-jsd-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inte-sicret-jsd-client/inte-sicret-jsd-client.iml" filepath="$PROJECT_DIR$/inte-sicret-jsd-client/inte-sicret-jsd-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inte-sicret-jsd-core/inte-sicret-jsd-core.iml" filepath="$PROJECT_DIR$/inte-sicret-jsd-core/inte-sicret-jsd-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inte-sicret-jsd-dao/inte-sicret-jsd-dao.iml" filepath="$PROJECT_DIR$/inte-sicret-jsd-dao/inte-sicret-jsd-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inte-sicret-jsd-entities/inte-sicret-jsd-entities.iml" filepath="$PROJECT_DIR$/inte-sicret-jsd-entities/inte-sicret-jsd-entities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inte-sicret-jsd-service/inte-sicret-jsd-service.iml" filepath="$PROJECT_DIR$/inte-sicret-jsd-service/inte-sicret-jsd-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inte-sicret-jsd-ws.iml" filepath="$PROJECT_DIR$/inte-sicret-jsd-ws.iml" />
+    </modules>
+  </component>
+</project>

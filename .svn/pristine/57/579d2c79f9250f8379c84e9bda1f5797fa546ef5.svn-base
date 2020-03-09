@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.JsdSeguimientoDAO">
+
+    <select id="obtenerTipoEvento" parameterType="map" statementType="CALLABLE">
+        { #{OUT_TIPO_EVENTO,mode=OUT,jdbcType=VARCHAR} = call SICRET.PKG_JSD_WS_SEGUIMIENTO.FN_OBTENER_TIPO_EVENTO(
+        #{p_issue_key, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="obtenerIdExterno" parameterType="map" statementType="CALLABLE">
+        { #{OUT_ID_EXTERNO,mode=OUT,jdbcType=VARCHAR} =  call SICRET.PKG_JSD_WS_SEGUIMIENTO.FN_OBTENER_ID_EXTERNO(
+        #{p_issue_key, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="existeIssueKey" parameterType="map" statementType="CALLABLE">
+        { #{OUT_ISSUE_KEY,mode=OUT,jdbcType=INTEGER} =  call SICRET.PKG_JSD_WS_SEGUIMIENTO.FN_EXISTE_ISSUE_KEY(
+        #{p_issue_key, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="obtenerAreaResolutora" parameterType="map" statementType="CALLABLE">
+        { #{OUT_AREA_RESOLUTORA,mode=OUT,jdbcType=VARCHAR} =  call SICRET.PKG_JSD_WS_SEGUIMIENTO.FN_OBTENER_GRUPO_RESOLUTOR(
+        #{p_issue_key, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="actualizaAreaResolutora" parameterType="map" statementType="CALLABLE">
+        { #{OUT_REG_ACT,mode=OUT,jdbcType=INTEGER} =  call SICRET.PKG_JSD_WS_SEGUIMIENTO.FN_ACTUALIZA_GRUPO_RESOLUTOR(
+        #{p_issue_key, mode=IN, jdbcType=VARCHAR},
+        #{p_area_resolutora, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+</mapper>

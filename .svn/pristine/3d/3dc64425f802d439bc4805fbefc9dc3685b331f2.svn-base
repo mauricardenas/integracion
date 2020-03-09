@@ -1,0 +1,5 @@
+#MY-BATIS
+mybatis.typeAliasesPackage=com.grupogtd.integration.sicret.jsd.ws.dto
+mybatis.basePackage=com.grupogtd.integration.sicret.jsd.ws.dao
+mybatis.configLocation=classpath:com/grupogtd/integration/sicret/jsd/ws/dao/context/mybatis-config.xml
+mybatis.mapperLocations=classpath:com/grupogtd/integration/sicret/jsd/ws/dao/*.xml

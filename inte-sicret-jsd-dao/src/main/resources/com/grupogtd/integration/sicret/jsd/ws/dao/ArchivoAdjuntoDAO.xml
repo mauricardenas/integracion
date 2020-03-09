@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.ArchivoAdjuntoDAO">
+
+    <select id="hayArchivoAdjunto" parameterType="map" statementType="CALLABLE">
+        { #{OUT_ARCHIVO_ADJUNTO,mode=OUT,jdbcType=INTEGER} =  call SICRET.PKG_JSD_WS_ARCHIVO_ADJUNTO.FN_HAY_ARCHIVO_ADJUNTO(
+        #{p_id_externo, mode=IN, jdbcType=VARCHAR},
+        #{p_nombre_archivo, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+</mapper>

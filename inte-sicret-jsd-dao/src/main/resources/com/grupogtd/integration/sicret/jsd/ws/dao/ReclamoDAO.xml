@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.ReclamoDAO">
+
+    <select id="obtenerSeveidadReclamo" parameterType="map" statementType="CALLABLE">
+        { #{OUT_SEVERIDAD,mode=OUT,jdbcType=INTEGER} =  call SICRET.PKG_JSD_TRG_CREAR_EVENTO_R.FN_ES_TICKET_PADRE(
+        #{p_id_reclamo, mode=IN, jdbcType=INTEGER}
+        )}
+    </select>
+
+</mapper>

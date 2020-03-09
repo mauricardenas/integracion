@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.WsComunicacionDAO">
+
+    <select id="insertarJsdComunicacion" parameterType="map" statementType="CALLABLE">
+        { #{OUT_IS_INSERTED,mode=OUT,jdbcType=INTEGER} = call SICRET.PKG_JSD_WS_COMUNICACION.FN_PROCESAR_INSERT(
+        #{p_issue_key, mode=IN, jdbcType=VARCHAR},
+        #{p_data, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="obtenerIssueKey" parameterType="map" statementType="CALLABLE">
+        { #{out_issue_key,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} =  call SICRET.PKG_JSD_WS_COMUNICACION.FN_OBTENER_ISSUE_KEY(
+        #{p_id_comunicacion, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getJsdRequestPayloadAsJson" parameterType="map" statementType="CALLABLE">
+        { #{v_data,mode=OUT,jdbcType=CLOB, resultMap=resultEventMap} = call SICRET.PKG_JSD_WS_COMUNICACION.FN_OBTENER_DATA(
+        #{p_id_comunicacion, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="updateActividad" parameterType="map" statementType="CALLABLE">
+        { call SICRET.PKG_JSD_WS_COMUNICACION.SP_UPDATE_ESTADO_ACTIVIDAD(
+        #{p_id_actividad, mode=IN, jdbcType=VARCHAR},
+        #{p_estado, mode=IN, jdbcType=VARCHAR},
+        #{p_subestado, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+</mapper>

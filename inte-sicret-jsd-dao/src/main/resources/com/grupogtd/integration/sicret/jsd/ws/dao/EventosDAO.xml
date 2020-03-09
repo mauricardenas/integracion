@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.EventosDAO">
+
+    <select id="insertEvento" parameterType="map" statementType="CALLABLE">
+        { #{OUT_IS_INSERTED,mode=OUT,jdbcType=INTEGER} =  call SICRET.PKG_JSD_WS_TBL_EVENTO.FN_INSERTAR_EVENTO(
+        #{p_id_evento, mode=IN, jdbcType=VARCHAR},
+        #{p_evento, mode=IN, jdbcType=VARCHAR},
+        #{p_tipo_evento, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+</mapper>

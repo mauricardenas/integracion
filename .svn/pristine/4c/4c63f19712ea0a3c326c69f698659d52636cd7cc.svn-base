@@ -1,0 +1,7 @@
+#JDBC
+jdbc.sicret.url=jdbc:oracle:thin:@//10.1.202.157:1521/JBOSSD
+#jdbc.sicret.url=jdbc:oracle:thin:@//10.1.200.23:1521/SICRET
+#jdbc.sicret.url=jdbc:oracle:thin:@//10.1.202.157:1521/JBOSST
+jdbc.sicret.username=sicret
+jdbc.sicret.password=co2109
+jdbc.sicret.driverClassName=oracle.jdbc.OracleDriver

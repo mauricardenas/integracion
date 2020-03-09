@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.BitacoraDAO">
+
+    <select id="insertBitacora" parameterType="map" statementType="CALLABLE">
+        { call SICRET.PKG_JSD_WS_BITACORA.SP_PROCESAR_INSERT_BITACORA(
+        #{p_comentario, mode=IN, jdbcType=VARCHAR},
+        #{p_id_externo, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="insertBitacoraActividad" parameterType="map" statementType="CALLABLE">
+        { #{OUT_IS_INSERTED,mode=OUT,jdbcType=INTEGER, resultMap=resultEventMap} = call SICRET.PKG_JSD_WS_BITACORA.FN_INSERT_BITACORA_ACT(
+        #{p_comentario, mode=IN, jdbcType=VARCHAR},
+        #{p_id_actividad, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+</mapper>

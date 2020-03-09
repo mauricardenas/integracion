@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="inte-sicret-jsd-business" />
+        <module name="inte-sicret-jsd-dao" />
+        <module name="inte-sicret-jsd-service" />
+        <module name="inte-sicret-jsd-core" />
+        <module name="inte-sicret-jsd-client" />
+        <module name="inte-sicret-jsd-entities" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="inte-sicret-jsd-business" target="1.6" />
+      <module name="inte-sicret-jsd-client" target="1.5" />
+      <module name="inte-sicret-jsd-core" target="1.6" />
+      <module name="inte-sicret-jsd-dao" target="1.6" />
+      <module name="inte-sicret-jsd-entities" target="1.6" />
+      <module name="inte-sicret-jsd-service" target="1.6" />
+      <module name="inte-sicret-jsd-ws" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

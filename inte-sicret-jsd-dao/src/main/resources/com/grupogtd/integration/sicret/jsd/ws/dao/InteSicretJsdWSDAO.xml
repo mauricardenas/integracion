@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.InteSicretJsdWSDAO">
+
+    <select id="getConfiguracionJSD" parameterType="map" statementType="CALLABLE">
+        { #{OUT_CURSOR_JSD,mode=OUT,jdbcType=CURSOR, resultMap=resultEventMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_CONFIGURACION_JSD(
+        #{p_evento, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+    <resultMap id="resultEventMap" type="com.grupogtd.integration.sicret.jsd.ws.dto.ConfiguracionTicketDTO">
+        <result column="REQUEST_TYPE_ID" property="requestTypeId"/>
+        <result column="CATEGORIA" property="categoria"/>
+        <result column="ZONA" property="zona"/>
+        <result column="SERVICIO" property="servicio"/>
+        <result column="COMPONENTE" property="componente"/>
+    </resultMap>
+
+    <select id="getResumen" parameterType="map" statementType="CALLABLE">
+        { #{OUT_RESUMEN,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_RESUMEN(
+        #{p_id_actividad, mode=IN, jdbcType=VARCHAR},
+         #{p_evento, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getDescripcion" parameterType="map" statementType="CALLABLE">
+        { #{OUT_DESCRIPCION,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_DESCRIPCION(
+        #{p_id_actividad, mode=IN, jdbcType=VARCHAR},
+         #{p_evento, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getPropertyValue" parameterType="map" statementType="CALLABLE">
+        { #{OUT_VALUE,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} = call SICRET.FN_GET_PROPERTIES(
+        #{i_key, mode=IN, jdbcType=VARCHAR},
+        #{i_environment, mode=IN,jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getConfiguracion" parameterType="map" statementType="CALLABLE">
+        { #{OUT_CONFIGURACION,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_CONFIGURACION(
+        #{p_tipo_lista, mode=IN, jdbcType=VARCHAR},
+        #{p_subtipo_lista, mode=IN,jdbcType=VARCHAR},
+        #{p_estado_lista, mode=IN, jdbcType=VARCHAR},
+        #{p_valor_visible, mode=IN,jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getEstadoValidacion" parameterType="map" statementType="CALLABLE">
+        { #{OUT_ESTADO,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} = call SICRET.PKG_JSD_CONFIGURACION.GET_ESTADO_VALIDACION_SICRET(
+        #{p_id_aplicacion, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="insertarJsdSeguimiento" parameterType="map" statementType="CALLABLE">
+        {call SICRET.PKG_JSD_CONFIGURACION.SP_PROCESAR_INSERT(
+        #{p_id_evento, mode=IN, jdbcType=VARCHAR},
+        #{p_evento, mode=IN, jdbcType=VARCHAR},
+        #{p_issue_id, mode=IN, jdbcType=VARCHAR},
+        #{p_issue_key, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getUsuarioCreacion" parameterType="map" statementType="CALLABLE">
+        { #{OUT_USUARIO,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_USUARIO_CREACION(
+        #{p_id_evento, mode=IN, jdbcType=VARCHAR},
+        #{p_evento, mode=IN,jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getIssueKey" parameterType="map" statementType="CALLABLE">
+        { #{OUT_ISSUE,mode=OUT,jdbcType=VARCHAR, resultMap=resultEventMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_ISSUE_KEY(
+        #{p_id_evento, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getDestinatarios" parameterType="map" statementType="CALLABLE">
+        { #{OUT_DESTINATARIOS,mode=OUT,jdbcType=CURSOR, resultMap=obtenerCorreosResultMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_DESTINATARIO_CORREO(
+        #{p_tipo_lista, mode=IN, jdbcType=VARCHAR},
+        #{p_subtipo_lista, mode=IN,jdbcType=VARCHAR},
+        #{p_estado_lista, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getComentarioActividad" parameterType="map" statementType="CALLABLE">
+        { #{OUT_CURSOR,mode=OUT,jdbcType=CURSOR, resultMap=obtenerComentariosResultMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_COMENTARIO_ACT(
+        #{p_id_bitacora, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="getComentarioReclamo" parameterType="map" statementType="CALLABLE">
+        { #{OUT_CURSOR,mode=OUT,jdbcType=CURSOR, resultMap=obtenerComentariosResultMap} = call SICRET.PKG_JSD_CONFIGURACION.FN_OBTENER_COMENTARIO_REC(
+        #{p_id_bitacora, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <resultMap id="obtenerCorreosResultMap" type="com.grupogtd.integration.sicret.jsd.ws.dto.CorreoDTO">
+        <result column="valor_visible" property="correo" />
+    </resultMap>
+
+    <resultMap id="obtenerComentariosResultMap" type="com.grupogtd.integration.sicret.jsd.ws.dto.AddCommentDTO">
+        <result column="comentario" property="comentario" />
+        <result column="jsd_issue_key" property="issueKey" />
+        <result column="usuario_crea" property="usuarioCreacion" />
+    </resultMap>
+
+
+
+</mapper>

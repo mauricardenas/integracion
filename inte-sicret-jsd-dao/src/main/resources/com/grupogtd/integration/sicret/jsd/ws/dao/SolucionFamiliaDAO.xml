@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grupogtd.integration.sicret.jsd.ws.dao.SolucionFamiliaDAO">
+
+    <select id="obtenerIdSolReclamo" parameterType="map" statementType="CALLABLE">
+        { #{OUT_ID_SOLUCION,mode=OUT,jdbcType=VARCHAR} =  call SICRET.PKG_JSD_WS_SOLUCION_FAMILIA.FN_OBTENER_SOL_FAMILIA_RECLAMO(
+        #{p_codigo_solucion, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+    <select id="existeSolucionReclamo" parameterType="map" statementType="CALLABLE">
+        { #{OUT_HAY_SOLUCION,mode=OUT,jdbcType=INTEGER} =  call SICRET.PKG_JSD_WS_SOLUCION_FAMILIA.FN_EXISTE_SOLUCION_RECLAMO(
+        #{p_id_reclamo, mode=IN, jdbcType=VARCHAR}
+        )}
+    </select>
+
+</mapper>

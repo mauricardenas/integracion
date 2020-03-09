@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss-web PUBLIC
+        "-//JBoss//DTD J2EE Application 1.4//EN"
+        "http://www.jboss.org/j2ee/dtd/jboss-web_4_0.dtd">
+<jboss-web>
+    <class-loading java2ClassLoadingCompliance="false">
+        <loader-repository>InteSicretJsdWS:archive=inte-sicret-jsd-ws.war<loader-repository-config>java2ParentDelegation=false</loader-repository-config>
+        </loader-repository>
+    </class-loading>
+        <context-root>InteSicretJsdWS</context-root>
+</jboss-web>
